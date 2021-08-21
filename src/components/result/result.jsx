@@ -33,8 +33,6 @@ function Result({ ipAddress }) {
         getDataWithApi();
     }, [ipAddress])
 
-
-
     if (loading) {
         return <div>Loading...</div>
     } else {
