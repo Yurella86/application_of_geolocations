@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Item from '../item/item'
 
 import config from "./../../config.json"
 import './result.scss'
@@ -15,18 +16,9 @@ function Result({ ipAddress }) {
             const data = await response.json();
             setDataApi(data)
             setLoading(false)
-            console.log("fetch", Boolean(ipAddress));
         } catch (error) {
             console.log(error);
         }
-    }
-    function itemsKeys() {
-        const arrayKeysData = Object.keys(dataApi)
-        return arrayKeysData
-    }
-    function itemsValues() {
-        const arrayValuesData = Object.values(dataApi)
-        return arrayValuesData
     }
 
     useEffect(() => {
@@ -41,10 +33,14 @@ function Result({ ipAddress }) {
                 {dataApi.error ?
                     <div>Something went wrong 😞. Please try again.</div> :
                     <div className="items" >
-                        <div className="item-keys">{itemsKeys().map((k) => <div>{k}</div>)}</div>
-                        <div className="item-values">{itemsValues().map((v) => <div>{v}</div>)}</div>
+                        {Object.keys(dataApi).map(elKey => (
+                            <div key={elKey}>
+                                <Item
+                                    elKey={elKey}
+                                    elValue={dataApi[elKey]} />
+                            </div>
+                        ))}
                     </div>}
-
             </div>
         )
     }
