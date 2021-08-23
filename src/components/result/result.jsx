@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import Item from '../item/item'
-
 import config from "./../../config.json"
 import './result.scss'
 
@@ -40,7 +39,8 @@ function Result({ ipAddress }) {
                                     elValue={dataApi[elKey]} />
                             </div>
                         ))}
-                    </div>}
+                    </div>
+                }
             </div>
         )
     }
