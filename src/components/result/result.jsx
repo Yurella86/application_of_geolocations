@@ -6,9 +6,9 @@ import './result.scss'
 function Result({ ipAddress }) {
 
     const [loading, setLoading] = useState(true)
-    const [dataApi, setDataApi] = useState()
+    const [dataApi, setDataApi] = useState({})
 
-    async function getDataWithApi(ip) {
+    async function getDataWithApi() {
         try {
             setLoading(true)
             const response = await fetch(`${config.baseURL}${ipAddress}/${config.format}/`)
@@ -32,13 +32,13 @@ function Result({ ipAddress }) {
                 {dataApi.error ?
                     <div>Something went wrong 😞. Please try again.</div> :
                     <div className="items" >
-                        {Object.keys(dataApi).map(elKey => (
-                            <div key={elKey}>
-                                <Item
-                                    elKey={elKey}
-                                    elValue={dataApi[elKey]} />
-                            </div>
-                        ))}
+                        {
+                            config.exampleFollowingOrder.map(el => {
+                                return <Item
+                                    elKey={el}
+                                    elValue={dataApi[el]} />
+                            })
+                        }
                     </div>
                 }
             </div>

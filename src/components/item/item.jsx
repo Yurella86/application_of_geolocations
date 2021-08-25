@@ -30,17 +30,10 @@ function Item({ elKey, elValue }) {
 
     return (
         <div className="item">
-            <div className={`type ${backColor(elValue)}`}>
-                {typeElement(elValue)}
-            </div>
-            <div className="key-item">
-                {elKey + ":"}
-            </div>
-            <div className={`value-item ${backColor(elValue)}`}>
-                {elValue === true || elValue === false ?
-                    '' + elValue :
-                    '"' + elValue + '"'}
-            </div>
+            <span className={`type ${backColor(elValue)}`}>{typeElement(elValue)}</span>
+            <span className="key-item">{elKey} :</span>
+            <span className={`value-item ${backColor(elValue)}`}>
+                {elValue === false || elValue === true ? `${elValue}` : `"${elValue}"`}</span>
         </div>
     )
 }
