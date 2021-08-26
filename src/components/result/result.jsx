@@ -30,7 +30,7 @@ function Result({ ipAddress }) {
         return (
             <div>
                 {dataApi.error ?
-                    <div>Something went wrong 😞. Please try again.</div> :
+                    <div>Something went wrong  &#128542;. Please try again.</div> :
                     <div className="items" >
                         {
                             config.exampleFollowingOrder.map(el => {
